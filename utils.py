@@ -12,14 +12,13 @@ collection = db['messages']
 openai.api_key = os.getenv('OPEN_AI_TOKEN')
 
 def chat(message):
-    response = openai.Completion.create(
-        engine='text-davinci-003',
-        prompt=message,
+    response = openai.ChatCompletion.create(
+        model='gpt-3.5-turbo',
+        messages = [ {'role': 'user', 'content': message}],
         temperature=0.7,
         max_tokens=250
     )
-
-    reply = response.choices[0].text.strip()
+    reply = response.choices[0]['message']['content'].strip()
 
     return reply
 

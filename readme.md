@@ -25,56 +25,14 @@ Una vez tengamos ambas cuentas creadas podemos crear el archivo .env el cual con
 copy .env.example .emv
 ```
 
-### Database
-Para este proyecto usamos la base de datos MongoDB y para mayor facilidad vamos a usar un contenedor de docker para este fin.
-
-Bajar la imagen de MongoDB
-```bash
-docker pull mongo
-```
-
-Luego crear el contenedor
-```bash
-docker run --name mymongo -v ./data:/data/db -p 27017:27017 -d mongo
-```
-
-Para asegurarnos que el contenedor está corriendo como debe ser ejecutamos los siguientes comandos:
+### Docker
+El proyecto está Dockerizado por lo que solamente es necesario tener docker instalado y ejecutar el siguiente comand:
 
 ```bash
-docker ps -a
-
-CONTAINER ID   IMAGE     COMMAND                  CREATED       STATUS       PORTS                      NAMES
-f7b743378988   mongo     "docker-entrypoint.s…"   5 hours ago   Up 5 hours   0.0.0.0:27017->27017/tcp   mymongo
-
-docker exec -it f7b743378988 mongosh
-
-Current Mongosh Log ID:	6498ac4ee8e1f760e8d60910
-Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.0
-Using MongoDB:		6.0.6
-Using Mongosh:		1.10.0
-
-For mongosh info see: https://docs.mongodb.com/mongodb-shell/
-
-------
-   The server generated these startup warnings when booting
-   2023-06-25T16:19:25.642+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
-   2023-06-25T16:19:26.086+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-   2023-06-25T16:19:26.086+00:00: vm.max_map_count is too low
-------
-
-test>
-
+docker-compose up 
 ```
 
-En este punto ya tenemos el docker listo para las pruebas.
-
-### Python libraries
-
-Instalamos las librerías del proyecto con el siguiente comando:
-
-```bash
-pip3 install -r requirements.txt
-```
+En este punto ya podemos hacer uso de la aplicación.
 
 ## Usage
 
@@ -110,8 +68,6 @@ Ahora tenemos un dominio seguro y gratuito para poder usar en cualquier cliente 
 
 **NOTA: ESTO ES UN EJEMPLO, EN CADA CASO PUEDE VARIAR LA URL.**
 
-Finalmente ejecutamos nuestro Backend con el siguiente comando:
-
-```bash
-python3 app.py
-```
+## Postman example requests
+En el folder  **documentation** se encuentra el archivo **Hunty_chat_integration.postman_collection.json** que se puede importar directamente en postman para tener una collection con los requests que acepta el proyecto. Aquñi está el link de cómo importar una collection [Importing and exporting data
+](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman)

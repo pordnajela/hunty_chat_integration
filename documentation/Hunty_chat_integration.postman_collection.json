@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "2a5475f7-30c9-4320-a9e8-dc76cc748d1e",
+		"name": "Hunty chat integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15023014"
+	},
+	"item": [
+		{
+			"name": "All messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host_flask}}/messages",
+					"host": [
+						"{{host_flask}}"
+					],
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Message by user_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host_flask}}/user/573193206968/messages",
+					"host": [
+						"{{host_flask}}"
+					],
+					"path": [
+						"user",
+						"573193206968",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Message by message_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host_flask}}/messages/23b9c6c40105d09e1229daa32b14408d10df2e7819aa640f937394c1a60099b4",
+					"host": [
+						"{{host_flask}}"
+					],
+					"path": [
+						"messages",
+						"23b9c6c40105d09e1229daa32b14408d10df2e7819aa640f937394c1a60099b4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"Hola!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_flask}}/messages",
+					"host": [
+						"{{host_flask}}"
+					],
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

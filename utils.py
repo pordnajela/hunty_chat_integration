@@ -4,7 +4,7 @@ import openai
 import os
 
 # Instancio el cliente de MongoDB
-client = MongoClient('mongodb://127.0.0.1:27017/')
+client = MongoClient(os.getenv('MONGODB_URL'))
 db = client['hunty']
 collection = db['messages']
 

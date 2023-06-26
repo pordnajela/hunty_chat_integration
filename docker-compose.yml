@@ -1,0 +1,21 @@
+version: '3'
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      - "MONGO_HOSTNAME=mongo"
+    ports:
+      - 5002:5002
+    volumes:
+      - .:/var/app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    container_name: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - 27017:27017
